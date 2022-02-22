@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Header from "../layouts/Header";
 import styles from "../styles/Home.module.css";
+import axios from "axios";
 
 const Home: NextPage = () => {
   return (
@@ -13,7 +14,21 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>main</main>
+      <main className={styles.main}>
+        <div>main</div>
+        <button
+          onClick={async (e) => {
+            e.preventDefault();
+            const data = await axios.post(
+              "http://localhost:3333/auth/atGuardTest"
+            );
+            console.log(data);
+          }}
+        >
+          {" "}
+          AtGuardTest
+        </button>
+      </main>
 
       <footer className={styles.footer}>
         <a href="#" target="_blank" rel="noopener noreferrer">
