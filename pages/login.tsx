@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+axios.defaults.withCredentials = true;
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +21,8 @@ const Login = () => {
         axios.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${access_token}`;
+        console.log(data);
+        document.cookie = `access_token=${access_token}`;
       }}
     >
       <div>Email address</div>

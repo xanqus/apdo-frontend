@@ -5,6 +5,8 @@ import Header from "../layouts/Header";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 
+import { useEffect } from "react";
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -16,6 +18,19 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <div>main</div>
+        <button
+          onClick={async (e) => {
+            e.preventDefault();
+            const data = await axios.post("http://localhost:4000/api/login", {
+              email: "test@test.com",
+              password: "1234",
+            });
+            console.log(data);
+          }}
+        >
+          {" "}
+          test
+        </button>
         <button
           onClick={async (e) => {
             e.preventDefault();
